@@ -1,24 +1,58 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column     | Type   | Options                   |
+| ---------- | ------ | ------------------------- |
+| email      | string | null: false, unique: true |
+| password   | string | null: false               |
+| name       | string | null: false               |
+| name_kana  | string | null: false               |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :meetings
+- has_many :minutes
 
-* Database creation
+## meetings テーブル
 
-* Database initialization
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| date        | date       | null: false       |
+| time        | time       | null: false       |
+| title       | string     | null: false       |
+| client      | string     | null: false       |
+| zoom_url    | text       |                   |
+| user        | references | foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :minutes
+- has_many :member
+- belongs_to :user
 
-* Deployment instructions
+## minutes テーブル
 
-* ...
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| minutes        | text       | null: false       |
+| user           | references | foreign_key: true |
+| meeting        | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :meeting
+
+## members テーブル
+
+| Column                   | Type       | Options           |
+| ------------------------ | ---------- | ----------------- |
+| minutes_member_name      | string     | null: false       |
+| minutes_member_name_kana | string     | null: false       |
+| meeting                  | references | foreign_key: true |
+
+### Association
+
+- belongs_to :meeting
