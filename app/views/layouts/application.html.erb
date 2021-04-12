@@ -16,7 +16,7 @@
         <div class='right-btn'>
           <%= current_user.name %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :logout %>
-          <%= link_to "ミーティング作成", "#", class: :header_btn %>
+          <%= link_to "ミーティング作成", new_meeting_path, class: :header_btn %>
         </div>
       <% else %>
         <div class='right-btn'>
