@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Meetinglist</title>
+    <title>Meeting</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+    <header class="header">
+      <div class='site-title'>
+        サイトタイトル
+      </div>
+      <% if user_signed_in? %>
+        <div class='right-btn'>
+          <%= current_user.name %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :logout %>
+          <%= link_to "ミーティング作成", "#", class: :header_btn %>
+        </div>
+      <% else %>
+        <div class='right-btn'>
+          <%= link_to "ログイン", new_user_session_path, class: :header_btn %>
+          <%= link_to "新規登録", new_user_registration_path, class: :header_btn %>
+        </div>
+      <% end %>
+    </header>
+
+
 
   <body>
     <%= yield %>
