@@ -1,6 +1,8 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
+    @meeting = Meeting.all.order('date ASC').order('time ASC')
   end
 
   def new
@@ -15,6 +17,9 @@ class MeetingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
   end
 
   private
