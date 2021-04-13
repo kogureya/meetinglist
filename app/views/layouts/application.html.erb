@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Meeting</title>
+    <title>MeetingList</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
@@ -10,7 +10,7 @@
   </head>
     <header class="header">
       <div class='site-title'>
-        サイトタイトル
+        <%= link_to 'サイトタイトル', root_path %>
       </div>
       <% if user_signed_in? %>
         <div class='right-btn'>

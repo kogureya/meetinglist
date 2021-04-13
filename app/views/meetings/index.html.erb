@@ -1,23 +1,27 @@
-<% if user_signed_in? %>
-  <ul class='meeting-list'>
-    <% @meeting.each do |meeting| %>
-      <li class='list'>
-        <div class='meeting-day'>
-          会議日程
-          <%= meeting.date.strftime"%m/%d" %>
-          <%= meeting.time.strftime"%H:%M" %>
-        </div>
-        <div class='meeting-organizer'>
-          担当者
-          <%= meeting.user.name %>
-        </div>
-        <div class='meeting-title'>
-          <%= meeting.title %>
-        </div>
-        <div class='meeting-client'>
-          <%= meeting.client %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class='main-area'>
+  <% if user_signed_in? %>
+    <ul class='meeting-list'>
+      <% @meeting.each do |meeting| %>
+        <li class='list'>
+          <%= link_to meeting_path(meeting.id) do %>
+            <div class='meeting-day'>
+              会議日程
+              <%= meeting.date.strftime"%m/%d" %>
+              <%= meeting.time.strftime"%H:%M" %>〜
+            </div>
+            <div class='meeting-organizer'>
+              担当者
+              <%= meeting.user.name %>
+            </div>
+            <div class='meeting-title'>
+              <%= meeting.title %>
+            </div>
+            <div class='meeting-client'>
+              <%= meeting.client %>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

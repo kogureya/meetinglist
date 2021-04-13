@@ -1,0 +1,43 @@
+<div class='main-area'>
+  <%# ポップアップ化したい %>
+  <div class='show-wrap'>
+    <div class='show-window'>
+      <div class='meeting-day'>
+        会議日程
+        <%= @meeting.date.strftime"%m/%d" %>
+        <%= @meeting.time.strftime"%H:%M" %>
+      </div>
+      <div class='meeting-organizer'>
+        担当者
+        <%= @meeting.user.name %>
+      </div>
+      <div class='meeting-title'>
+        <%= @meeting.title %>
+      </div>
+      <div class='meeting-client'>
+        <%= @meeting.client %>
+      </div>
+      <ul class='meeting-member-list'>
+        <%= 10.times do%>
+          <li class='meeting-member'>
+            テストだあああああああああああああああああああああ
+          </li>
+        <% end %>
+      </ul>
+      <div class='minutes-area'>
+        議事録
+        めっちゃ必要
+        長くなると思う
+        どうやって表示しようか
+        これから考えるけど
+        ポップアップにする？
+        別ページにする？
+        同一でスクロールもありだよね
+        スクロールかな
+        テストも兼ねてるし
+        とてつもなく長い一文だとどういう表示になるのか疑問に思うけど折り返されるかな？はみ出るかな？といったテスト
+      </div>
+    </div>
+  </div>
+  <%# ポップアップ化したい ここまで%>
+</div>
