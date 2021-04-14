@@ -28,14 +28,14 @@
 
 ### Association
 
-- has_many :minutes
-- has_many :member
+- has_one :minute
 - belongs_to :user
 
 ## minutes テーブル
 
 | Column         | Type       | Options           |
 | -------------- | ---------- | ----------------- |
+| member         | text       | null: false       |
 | minutes        | text       | null: false       |
 | user           | references | foreign_key: true |
 | meeting        | references | foreign_key: true |
@@ -43,16 +43,4 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :meeting
-
-## members テーブル
-
-| Column                   | Type       | Options           |
-| ------------------------ | ---------- | ----------------- |
-| minutes_member_name      | string     | null: false       |
-| minutes_member_name_kana | string     | null: false       |
-| meeting                  | references | foreign_key: true |
-
-### Association
-
 - belongs_to :meeting
